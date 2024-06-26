@@ -13,21 +13,33 @@
 Signup expects
 
 ```js
+POST /api/auth/signup HTTP/1.1
+Host: localhost:3000
+Content-Type: application/json
+Content-Length: 125
+
 {
-    firstname: string,
-    lastname: string,
-    email: string,
-    password: string
+    "firstname": "chucho",
+    "lastname": "and",
+    "email": "usud@effmplo.com",
+    "password": "Mitigado123"  
 }
+
 ```
 
 Signin expects
 
 ```js
+POST /api/auth/signin HTTP/1.1
+Host: localhost:3000
+Content-Type: application/json
+Content-Length: 71
+
 {
-    email: string,
-    password: string
+    "email": "usud@effmplo.com",
+    "password": "Mitigado123"
 }
+
 ```
 ## Tools
 * NodeJS/Express: Server
