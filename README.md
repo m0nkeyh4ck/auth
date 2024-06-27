@@ -19,8 +19,7 @@ Content-Type: application/json
 Content-Length: 125
 
 {
-    "firstname": "chucho",
-    "lastname": "and",
+    "username": "chucho",
     "email": "usud@effmplo.com",
     "password": "Mitigado123"  
 }
@@ -36,7 +35,7 @@ Content-Type: application/json
 Content-Length: 71
 
 {
-    "email": "usud@effmplo.com",
+    "username": "pepitoperres",
     "password": "Mitigado123"
 }
 

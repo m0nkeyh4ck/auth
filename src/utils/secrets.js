@@ -6,16 +6,14 @@ const {
     DB_HOST,
     DB_USER,
     DB_PASS,
-    DB_NAME,
-    JWT_SECRET_KEY
+    DB_NAME
 } = process.env;
 
 const requiredCredentials = [
     'DB_HOST',
     'DB_USER',
     'DB_PASS',
-    'DB_NAME',
-    'JWT_SECRET_KEY'
+    'DB_NAME'
 ];
 
 for (const credential of requiredCredentials) {
@@ -29,6 +27,5 @@ module.exports = {
     DB_HOST,
     DB_USER,
     DB_PASS,
-    DB_NAME,
-    JWT_SECRET_KEY
+    DB_NAME
 };

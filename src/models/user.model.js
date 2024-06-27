@@ -1,11 +1,10 @@
 const db = require('../config/db.config');
-const { createNewUser: createNewUserQuery, findUserByEmail: findUserByEmailQuery } = require('../database/queries');
+const { createNewUser: createNewUserQuery, findUserByEmail: findUserByEmailQuery, findUserByUsername: findUserByUsernameQuery } = require('../database/queries');
 const { logger } = require('../utils/logger');
 
 class User {
-    constructor(firstname, lastname, email, password) {
-        this.firstname = firstname;
-        this.lastname = lastname;
+    constructor(username, email, password) {
+        this.username = username;
         this.email = email;
         this.password = password;
     }
@@ -13,8 +12,7 @@ class User {
     static create(newUser, cb) {
         db.query(createNewUserQuery, 
             [
-                newUser.firstname, 
-                newUser.lastname, 
+                newUser.username, 
                 newUser.email, 
                 newUser.password
             ], (err, res) => {
@@ -25,8 +23,7 @@ class User {
                 }
                 cb(null, {
                     id: res.insertId,
-                    firstname: newUser.firstname,
-                    lastname: newUser.lastname,
+                    username: newUser.username,
                     email: newUser.email
                 });
         });
@@ -46,6 +43,23 @@ class User {
             cb({ kind: "not_found" }, null);
         })
     }
+
+
+    static findByUsername(username, cb) {
+        db.query(findUserByUsernameQuery, username, (err, res) => {
+            if (err) {
+                logger.error(err.message);
+                cb(err, null);
+                return;
+            }
+            if (res.length) {
+                cb(null, res[0]);
+                return;
+            }
+            cb({ kind: "not_found" }, null);
+        });
+    }
+
 }
 
 module.exports = User;
