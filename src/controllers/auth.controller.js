@@ -17,12 +17,15 @@ exports.signup = (req, res) => {
             res.status(201).send({
                 status: "success",
                 data: {
-                    data
+                    message: 'Usuario creado'
                 }
             });
         }
     });
 };
+
+
+
 
 exports.signin = (req, res) => {
     const { username, password } = req.body;
@@ -31,7 +34,7 @@ exports.signin = (req, res) => {
             if (err.kind === "not_found") {
                 res.status(404).send({
                     status: 'error',
-                    message: `User ${username} was not found`
+                    message: 'Incorrect Credential'
                 });
                 return;
             }
